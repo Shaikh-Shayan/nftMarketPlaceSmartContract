@@ -22,12 +22,7 @@ contract NFT1155 is ERC1155, ReentrancyGuard, Ownable {
 
   address private storageAddress;
   PersistentStorage _persistentStorage;
-  // function setStorage(address _storageAddress)public onlyOwner
-  // {
-  //   storageAddress = address(_storageAddress);
-  //   _persistentStorage = PersistentStorage(storageAddress);
-  // }
-
+  
   //Logs the event whenever a new nft is minted.
   event mintedNftDetail(uint256 nftId, address nftArtist, string nftMetadataUri);
 
@@ -103,34 +98,6 @@ contract NFT1155 is ERC1155, ReentrancyGuard, Ownable {
     return _nftId; //Returning filter array of nft Ids which mint by specific user
   }
 
-  //  function fetchMintednft2() public view returns (PersistentStorage.nftMintDetails[] memory) {
-  //     uint256 totalItemCount = _persistentStorage.fetchNftId(); //Getting current value of tokenId to track total number of nfts minted
-  //     uint256 itemCount = 0;
-  //     uint256 currentIndex = 0;
-
-  //     //Loop to find out size of array for data
-  //     for (uint256 i = 0; i < totalItemCount; i++) {
-  //       if (_persistentStorage.fetchNftMintDetail(i + 1).nftArtist == msg.sender) {
-  //         itemCount += 1;
-  //       }
-  //     }
-
-  //     //Creating array to store filter data of itemCount size
-  //     uint256[] memory _nftId = new uint256[](itemCount);
-  //     PersistentStorage.nftMintDetails[] memory _nftDetails = new PersistentStorage.nftMintDetails[](itemCount);
-  //     //Loop to store the filter data into the array.
-  //     for (uint256 i = 0; i < totalItemCount; i++) {
-  //       if (_persistentStorage.fetchNftMintDetail(i + 1).nftArtist == msg.sender) {
-  //         uint256 currentId = i + 1;
-  //         uint256 currentNftId = _persistentStorage.fetchNftMintDetail(currentId).nftId;
-  //         PersistentStorage.nftMintDetails memory currentNft =  _persistentStorage.fetchNftMintDetail(currentId);
-  //         _nftId[currentIndex] = currentNftId;
-  //         _nftDetails[currentIndex] = currentNft;
-  //         currentIndex += 1;
-  //       }
-  //     }
-  //     return _nftDetails; //Returning filter array of nft Ids which mint by specific user
-  //   }
 
   //Fetch the nft Artist of specific token id
   function fetchNftArtist(uint256 _nftId) public view returns (address) {
