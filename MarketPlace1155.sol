@@ -18,11 +18,6 @@ contract MarketPlace1155 is ReentrancyGuard, ERC1155Holder, Ownable {
   address private storageAddress;
   PersistentStorage _persistentStorage;
 
-  // function setStorage(address _storageAddress) public {
-  //   storageAddress = address(_storageAddress);
-  //   _persistentStorage = PersistentStorage(storageAddress);
-  // }
-
   address payable coinscouterOwnerAddress; // Storing the owner adress to whom transfer the royalties
   address payable nftArtistAddress; // Storing the Nft Creator/Artist address to whom transfer the royalties
 
@@ -37,17 +32,6 @@ contract MarketPlace1155 is ReentrancyGuard, ERC1155Holder, Ownable {
     _persistentStorage = PersistentStorage(storageAddress);
   }
 
-  //Event to log sell
-  // event MarketItemCreated(
-  //   uint256 indexed sellId, //nftSell Id [Id to uiquely identify nft on marketplace]
-  //   address indexed nftMintContractAddress, //Adress of smart contract where nft is minted
-  //   uint256 indexed nftId, //Unique id of Nft assign at the time of minting
-  //   address nftSellerAddress, //Address of the wallet/Person who want to sell this nft
-  //   address nftBuyerAddress, //Address of the wallet/Person who want to buy this nft
-  //   uint256 nftTotalCopies, //Total number of Copies/supply available on market place for sell
-  //   uint256 nftPrice, //Price decided by seller for nft [and this price is for single copy]/[per copy price]
-  //   bool sold //Boolean value to track that all copies of nft is sold out or not.
-  // );
 
   event sellEvent(
     uint256 indexed nftId, //Unique id of Nft assign at the time of minting
